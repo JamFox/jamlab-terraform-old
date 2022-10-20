@@ -10,10 +10,10 @@ terraform {
 
 provider "proxmox" {
     pm_api_url = var.proxmox_api_url
-    pm_user = var.proxmox_api_user
-    pm_password = var.proxmox_api_pass
+    pm_user = var.proxmox_user
+    pm_password = var.proxmox_pass
     pm_tls_insecure = var.proxmox_ignore_tls
-    pm_parallel = 2
+    pm_parallel = var.proxmox_parallel
 }
 
 # Base infra nodes
