@@ -19,12 +19,6 @@ variable "full_clone" {
     default = true    
 }
 
-variable "clone_wait" {
-    description = "Time provider waits after a clone"
-    type = number
-    default = 5    
-}
-
 variable "desc" {
     description = "Proxmox VM description"
     type = string

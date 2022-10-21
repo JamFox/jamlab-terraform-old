@@ -1,0 +1,4 @@
+proxmox_host         = "<IP:PORT>"
+proxmox_node         = "<NODENAME>"
+proxmox_api_user     = "<USER>@pam"
+proxmox_api_password = "<PASS>"

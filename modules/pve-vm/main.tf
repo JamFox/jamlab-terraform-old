@@ -12,7 +12,6 @@ resource "proxmox_vm_qemu" "qemu_vm" {
     target_node = var.target_node
     clone = var.clone
     full_clone = var.full_clone
-    clone_wait = var.clone_wait
     boot = var.boot
     agent = var.agent
     sockets = var.sockets
@@ -44,10 +43,4 @@ resource "proxmox_vm_qemu" "qemu_vm" {
     sshkeys = var.ssh_public_keys
     ciuser = var.default_image_username
     cipassword = var.default_image_password
-}
-
-# Wait for provisioning
-resource "time_sleep" "wait_180_sec" {
-  depends_on = [proxmox_vm_qemu.qemu_vm]
-  create_duration = "180s"
 }

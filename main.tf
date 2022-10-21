@@ -2,18 +2,35 @@ terraform {
   required_version = ">= 1.3.2"
   required_providers {
     proxmox = {
-      source = "Telmate/proxmox"
+      source  = "Telmate/proxmox"
       version = ">= 2.9.11"
     }
   }
 }
 
+variable "proxmox_api_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "proxmox_api_user" {
+  type = string
+}
+
+variable "proxmox_host" {
+  type = string
+}
+
+variable "proxmox_node" {
+  type = string
+}
+
 provider "proxmox" {
-    pm_api_url = var.proxmox_api_url
-    pm_user = var.proxmox_user
-    pm_password = var.proxmox_pass
-    pm_tls_insecure = var.proxmox_ignore_tls
-    pm_parallel = var.proxmox_parallel
+  pm_api_url      = "https://${var.proxmox_host}/api2/json"
+  pm_user         = var.proxmox_api_user
+  pm_password     = var.proxmox_api_password
+  pm_tls_insecure = true
+  pm_parallel     = 2
 }
 
 # Base infra nodes
@@ -22,5 +39,5 @@ module "base-infra" {
 
   providers = {
     proxmox = proxmox
-  }  
+  }
 }

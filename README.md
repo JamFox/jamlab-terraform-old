@@ -13,14 +13,9 @@ Terraform configurations for provisioning homelab VMs.
 
 ### Bootstrap
 
-First you need to set up API access to Proxmox. Follow the [Telmate Proxmox Terraform Provider Docs](https://github.com/Telmate/terraform-provider-proxmox/blob/master/docs/index.md).
+(Optional) Set up API access to Proxmox if you do not wish to use cluster admin to execute tasks. Follow the [Telmate Proxmox Terraform Provider Docs](https://github.com/Telmate/terraform-provider-proxmox/blob/master/docs/index.md).
 
-The Proxmox API connection parameters need to be set as Terraform variables either using:
-
-- a `.tfvars` file
-- inline `-vars`
-- environment variables
-- updating the defaults in `variables.tf`
+Set up sensitive PVE connection variables using `pve.hvl.sample` as a reference.
 
 ### Initializing and verifying configuration
 
