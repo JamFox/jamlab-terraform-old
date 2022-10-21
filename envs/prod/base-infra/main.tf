@@ -9,7 +9,7 @@ terraform {
 
 # Common variables
 locals {
-  desc = "VM from jamlab-terraform on ${timestamp()}"
+  desc = "VM from jamlab-terraform"
   default_target_node    = "pve0"
   full_clone             = true
   onboot       = true
