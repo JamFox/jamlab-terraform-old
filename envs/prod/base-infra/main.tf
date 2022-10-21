@@ -56,13 +56,29 @@ variable "vms" {
   description = "Base Infrastructure Virtual Machines"
   type = map
   default = {
-  vm0 = {
+  vb0 = {
         name = "vb0"
         ip   = "192.168.0.120"
     }
-  vm1 = {
+  vb1 = {
         name = "vb1"
         ip   = "192.168.0.121"
+  }
+  vb2 = {
+        name = "vb2"
+        ip   = "192.168.0.122"
+  }
+  vs0 = {
+        name = "vs0"
+        ip   = "192.168.0.130"
+    }
+  vs1 = {
+        name = "vs1"
+        ip   = "192.168.0.131"
+  }
+  vs2 = {
+        name = "vs2"
+        ip   = "192.168.0.132"
   }
  }
 }
