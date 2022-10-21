@@ -27,4 +27,7 @@ terraform.rc
 *.pem
 *.key
 
+# Ignore lock
+*.lock.hcl
+
 pve.hcl

@@ -52,13 +52,29 @@ locals {
   default_ssh_pubkey     = tls_private_key.bootstrap_private_key.public_key_openssh
 }
 
+variable "vms" {
+  description = "Base Infrastructure Virtual Machines"
+  type = map
+  default = {
+  vm0 = {
+        name = "vb0"
+        ip   = "192.168.0.120"
+    }
+  vm1 = {
+        name = "vb1"
+        ip   = "192.168.0.121"
+  }
+ }
+}
 
-module "vb0" {
+
+module "vm" {
+  for_each = var.vms
   source = "../../../modules/pve-vm" 
 
   target_node = local.default_target_node
   clone = local.default_clone
-  vm_name = "vb0"
+  vm_name = each.value.name
   desc = local.desc
 
   sockets = local.default_vm_sockets
@@ -71,8 +87,8 @@ module "vb0" {
   nameserver = local.nameserver
   vm_network = local.vm_network
   searchdomain = local.searchdomain
-  ipconfig0 = "ip=192.168.0.120${local.cidr},gw=${local.gateway}"
-  ip_address = "192.168.0.120"
+  ipconfig0 = "ip=${each.value.ip}${local.cidr},gw=${local.gateway}"
+  ip_address = "${each.value.ip}"
 
   vm_disk = local.vm_disk 
 
