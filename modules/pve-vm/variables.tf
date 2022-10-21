@@ -110,7 +110,7 @@ variable "searchdomain" {
 variable "boot" {
     description = "VM boot order. The Telmate provider has a bug, this module implements the workaround. Ref: https://github.com/Telmate/terraform-provider-proxmox/issues/282."
     type = string
-    default = "order=virtio0;ide2;net0"
+    default = "order=scsi0;ide2;net0"
 }
 
 variable "agent" {

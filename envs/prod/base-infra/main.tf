@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-# Set variables for provisioning 
+# Common variables
 locals {
   desc = "VM from jamlab-terraform on ${timestamp()}"
   default_target_node    = "pve0"
@@ -37,28 +37,28 @@ locals {
   vm_disk = [
     {
       type    = "scsi"
-      storage = "thpl"
+      storage = "local-lvm"
       size    = "200G"
-      format  = "qcow2"
+      format  = "raw"
       ssd     = 0
     },         
   ]  
 
-  qemu_agent_enabled = 1
-
+  # Connection details
+  qemu_agent_enabled     = 1
   default_image_username = "root"
   default_image_password = "packer"
-  default_ssh_prvkey = tls_private_key.bootstrap_private_key.private_key_pem
-  default_ssh_pubkey = tls_private_key.bootstrap_private_key.public_key_openssh
+  default_ssh_prvkey     = tls_private_key.bootstrap_private_key.private_key_pem
+  default_ssh_pubkey     = tls_private_key.bootstrap_private_key.public_key_openssh
 }
 
 
-module "bi0" {
+module "vb0" {
   source = "../../../modules/pve-vm" 
 
   target_node = local.default_target_node
   clone = local.default_clone
-  vm_name = "bi0"
+  vm_name = "vb0"
   desc = local.desc
 
   sockets = local.default_vm_sockets
