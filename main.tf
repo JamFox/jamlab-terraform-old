@@ -41,3 +41,12 @@ module "base-infra" {
     proxmox = proxmox
   }
 }
+
+# Jamlab-ansible provisioned nodes
+module "jamlab-ansible" {
+  source = "./envs/jamlab-ansible"
+
+  providers = {
+    proxmox = proxmox
+  }
+}
