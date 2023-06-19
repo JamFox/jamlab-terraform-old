@@ -51,6 +51,8 @@ Apply the plan and provision infrastructure as declared in configurations:
 terraform apply
 ```
 
+Note: use the `-auto-approve` flag to skip interactive approval of plan before applying.
+
 Unprovision infrastructure as declared in configurations:
 
 ```bash
